@@ -16,3 +16,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/login', function () {
+    return view('pages.login');
+})->name('login');
+
+
+Route::get('/project', function () {
+    $projects= \App\Models\Project::all();
+    return view('pages.search-project',compact('projects'));
+})->name('search-project');
