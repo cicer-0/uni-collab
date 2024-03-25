@@ -22,7 +22,7 @@ Route::get('/login', function () {
 })->name('login');
 
 
-Route::get('/project', function () {
+Route::get('/search-project', function () {
     $projects= \App\Models\Project::all();
     return view('pages.search-project',compact('projects'));
 })->name('search-project');
