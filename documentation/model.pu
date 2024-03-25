@@ -1,0 +1,60 @@
+@startuml
+
+entity "Users" as Users {
+  * UserId : int
+  --
+  + Username : string
+  + Password : string
+  + Email : string
+  + DateCreated : datetime
+}
+
+
+entity "Roles" as Roles {
+  * RoleId : int
+  --
+  + RoleName : string
+  + Description : string
+}
+
+
+entity "User_Roles" as UserRoles {
+  * UserId : int
+  * RoleId : int
+}
+
+entity "Proyectos" as Proyectos {
+  * ProjectId : int
+  --
+  + UserId : int
+  + NombreProyecto : string
+  + Estado : string
+  + DuenoProyecto : string
+  + Facultad : string
+  + AreaInvestigacion : string
+  + LineaInvestigacion : string
+  + CantIntegrantes : int
+  + Descripcion : string
+}
+entity "Formularios" as Formularios {
+  * FormId : int
+  --
+  + ProjectId : int
+  + MicrosoftFormLink : string
+}
+
+entity "Solicitudes" as Solicitudes {
+  * PostulacionId : int
+  --
+  + ProjectId : int
+  + UserId : int
+  + EstadoPostulacion : string
+}
+
+Proyectos ||--o{ Solicitudes
+Proyectos ||--o{ Formularios
+Users ||--o{ Proyectos
+Users ||--o{ UserRoles
+UserRoles }o--|| Roles
+
+@enduml
